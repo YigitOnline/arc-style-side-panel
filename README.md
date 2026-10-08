@@ -1,3 +1,5 @@
+
+
 ##  🇬🇧 English Description
 ---
 
@@ -5,6 +7,7 @@
 
 A clean, modern, and customizable Chrome Side Panel extension inspired by Arc Browser. It features a dark theme, custom glassmorphism components, fixed noise background overlays, vertical tabs management, hierarchical bookmarks, and a 4-column drag-and-drop favorites grid.
 
+![Arc Style Side Panel Preview](preview.png)
 ---
 
 ### 🚀 Key Features
@@ -52,6 +55,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Arc Browser'dan esinlenilerek geliştirilmiş; sade, modern ve kişiselleştirilebilir bir Chrome Yan Panel (Side Panel) uzantısı. Koyu tema, cam efekti (glassmorphism) bileşenleri, sabit gren/noise arka plan kaplaması, dikey sekme yönetimi, hiyerarşik yer imleri ve 4 sütunlu sürükle-bırak favori grid yapısı sunar.
 
+![Arc Style Side Panel Preview](preview.png)
 ---
 
 ### 🚀 Öne Çıkan Özellikler
