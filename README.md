@@ -1,5 +1,5 @@
-####  🇬🇧 English Description
-ℹ️ *Türkçe açıklama için lütfen aşağı kaydırın - 
+##  🇬🇧 English Description
+##### ℹ️ *Türkçe açıklama için lütfen aşağı kaydırın - 
     For Turkish description, please scroll down*
 
 # Arc Style Side Panel for Chrome
