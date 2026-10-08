@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Arc Style Side Panel",
+  "version": "1.2",
+  "description": "Arc tarzı dikey sekme ve özelleştirilebilir hızlı erişim paneli.",
+  "permissions": [
+    "sidePanel",
+    "tabs",
+    "bookmarks",
+    "favicon",
+    "storage"
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "Arc Yan Paneli Aç",
+    "default_icon": "icon.png"
+  }
+}

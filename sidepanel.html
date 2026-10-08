@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Arc Side Panel</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <!-- Gren/Noise Efekt Kaplaması -->
+  <div id="noiseOverlay" class="noise-overlay"></div>
+
+  <div class="sidebar-container">
+    <!-- Navigasyon Barı -->
+    <div class="nav-bar">
+      <div class="nav-controls">
+        <button id="goBackBtn" class="nav-btn" data-i18n-title="goBack">←</button>
+        <button id="goForwardBtn" class="nav-btn" data-i18n-title="goForward">→</button>
+        <button id="reloadBtn" class="nav-btn" data-i18n-title="reload">↻</button>
+      </div>
+    </div>
+
+    <!-- Üst Arama Çubuğu -->
+    <div class="search-box">
+      <input type="text" id="urlInput" data-i18n-placeholder="searchPlaceholder">
+    </div>
+
+    <!-- Dinamik Sabit İkonlar (4'lü Grid) -->
+    <div class="favorites-header">
+      <span class="section-title" data-i18n="favoritesHeader">FAVORİLER</span>
+      <button id="addPinBtn" class="add-pin-btn" data-i18n-title="addFavorite">+</button>
+    </div>
+    <div id="favoritesGrid" class="favorites-grid"></div>
+
+    <!-- Dikey Sekme Listesi -->
+    <div class="tabs-header-wrapper">
+      <span class="section-title" data-i18n="openTabsHeader">AÇIK SEKMELER</span>
+      <div class="tab-actions-group">
+        <button id="tidyTabsBtn" class="tab-action-btn" data-i18n-title="tidyTooltip" data-i18n="tidyBtn">✦ Tidy</button>
+        <button id="clearAllTabsBtn" class="tab-action-btn" data-i18n-title="clearAllTooltip" data-i18n="clearAllBtn">Clear All</button>
+      </div>
+    </div>
+
+    <div id="tabsList" class="tabs-list">
+      <div id="newTabRow" class="tab-item new-tab-item">
+        <span class="tab-icon-plus">+</span>
+        <span class="tab-title" data-i18n="newTab">New Tab</span>
+      </div>
+    </div>
+
+    <!-- Yer İmleri -->
+    <div class="section-title" data-i18n="bookmarksHeader">YER İMLERİ</div>
+    <div id="bookmarksList" class="bookmarks-list"></div>
+  </div>
+
+  <!-- Alt Ayarlar Çubuğu -->
+  <div class="footer-settings-bar">
+    <button id="settingsToggleBtn" class="settings-btn" data-i18n-title="settings">
+      <svg class="equalizer-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M492,120H373.81a60.19,60.19,0,0,0-115.62,0H20a20,20,0,0,0,0,40H258.19a60.19,60.19,0,0,0,115.62,0H492a20,20,0,0,0,0-40ZM316,160a20,20,0,1,1,20-20A20,20,0,0,1,316,160Z"/>
+        <path d="M492,352H253.81a60.19,60.19,0,0,0-115.62,0H20a20,20,0,0,0,0,40H138.19a60.19,60.19,0,0,0,115.62,0H492a20,20,0,0,0,0-40ZM196,392a20,20,0,1,1,20-20A20,20,0,0,1,196,392Z"/>
+        <path d="M492,236H413.81a60.19,60.19,0,0,0-115.62,0H20a20,20,0,0,0,0,40H298.19a60.19,60.19,0,0,0,115.62,0H492a20,20,0,0,0,0-40ZM356,276a20,20,0,1,1,20-20A20,20,0,0,1,356,276Z"/>
+      </svg>
+    </button>
+
+    <div id="settingsPopup" class="settings-popup">
+      <div class="popup-header" data-i18n="settingsTitle">Panel Ayarları</div>
+      
+      <div class="setting-row">
+        <label data-i18n="languageLabel">Dil / Language:</label>
+        <select id="langSelect" class="settings-select">
+          <option value="tr">Türkçe</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      <div class="setting-row">
+        <label data-i18n="color1Label">Renk 1 (Başlangıç):</label>
+        <input type="color" id="colorPicker1" value="#1c1c1e">
+      </div>
+
+      <div class="setting-row">
+        <label data-i18n="color2Label">Renk 2 (Degrade):</label>
+        <input type="color" id="colorPicker2" value="#2c2c2e">
+      </div>
+
+      <div class="setting-row">
+        <label data-i18n="noiseToggleLabel">Gren Aç/Kapa:</label>
+        <input type="checkbox" id="noiseToggle" checked>
+      </div>
+
+      <div class="setting-row col-setting">
+        <div class="setting-label-group">
+          <label data-i18n="noiseOpacityLabel">Gren Dozajı:</label>
+          <span id="noiseValDisplay" class="val-display">0.08</span>
+        </div>
+        <input type="range" id="noiseOpacitySlider" min="0" max="0.30" step="0.01" value="0.08">
+      </div>
+
+      <!-- EXPORT / IMPORT BUTONLARI -->
+      <div class="setting-row backup-row">
+        <button id="exportSettingsBtn" class="backup-btn" data-i18n="exportBtn">📥 Dışa Aktar</button>
+        <button id="importSettingsBtn" class="backup-btn" data-i18n="importBtn">📤 İçe Aktar</button>
+        <input type="file" id="importFileInput" accept=".json" style="display: none;">
+      </div>
+    </div>
+  </div>
+
+  <div id="customContextMenu" class="context-menu">
+    <div id="changeFolderIconOption" class="context-menu-item" data-i18n="changeIconMenu">✏️ İkonu Değiştir</div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

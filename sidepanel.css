@@ -1,0 +1,575 @@
+:root {
+  --bg-color-1: #1c1c1e;
+  --bg-color-2: #2c2c2e;
+  --bg-card: rgba(255, 255, 255, 0.08);
+  --bg-card-hover: rgba(255, 255, 255, 0.14);
+  --bg-active: rgba(255, 255, 255, 0.22);
+  --text-main: #e5e5ea;
+  --text-sub: #8e8e93;
+  --input-bg: rgba(255, 255, 255, 0.1);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --noise-opacity: 0.08;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  user-select: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-size: 14px;
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Sabit Doku Noise */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: var(--noise-opacity);
+  z-index: 1;
+  display: block;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 150px 150px;
+}
+
+.sidebar-container {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 100vh;
+  padding-bottom: 70px;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-sub);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  color: var(--text-main);
+}
+
+.search-box input {
+  width: 100%;
+  background: var(--input-bg);
+  border: none;
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: var(--text-main);
+  font-size: 12px;
+  outline: none;
+}
+
+/* FAVORİLER 4'LÜ IZGARA & DİNAMİK KAYMA ANİMASYONLARI */
+.favorites-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-pin-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-sub);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 2px;
+  position: relative;
+}
+
+/* Sürükleme anında 2. satır boşluğunu otomatik açan sınıf */
+.favorites-grid.expand-grid {
+  min-height: 118px; /* 2 Satırlı Yükseklik (56px + 6px gap + 56px) */
+}
+
+.fav-icon {
+  background: var(--bg-card);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+  position: relative;
+  height: 56px;
+  transition: background 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+}
+
+.fav-icon.dragging {
+  opacity: 0.2;
+  transform: scale(0.85);
+}
+
+/* Sağa Kayma Efekti (Tam 1 Hücre) */
+.fav-icon.shift-right-cell {
+  transform: translateX(calc(100% + 6px));
+}
+
+/* Alt Satıra Kayma Efekti (4. İkonun 5. İkona Geçişi) */
+.fav-icon.shift-next-row {
+  transform: translate(-300%, calc(100% + 6px));
+}
+
+.fav-icon.drop-target-slot {
+  outline: 2px dashed rgba(124, 77, 255, 0.8);
+  background: var(--bg-card-hover);
+}
+
+.fav-icon:hover {
+  background: var(--bg-card-hover);
+}
+
+.fav-icon img {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.delete-pin-btn {
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  font-size: 10px;
+  color: var(--text-sub);
+  display: none;
+}
+
+.fav-icon:hover .delete-pin-btn {
+  display: block;
+}
+.fav-placeholder {
+  height: 56px;
+  border: 2px dashed rgba(124, 77, 255, 0.7);
+  background: rgba(124, 77, 255, 0.12);
+  border-radius: 12px;
+  box-sizing: border-box;
+  transition: all 0.15s ease;
+}
+
+.section-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-sub);
+  letter-spacing: 0.3px;
+}
+
+.tabs-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  height: 18px;
+}
+
+.tab-actions-group {
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tabs-header-wrapper:hover .tab-actions-group,
+.tabs-list:hover .tab-actions-group,
+.sidebar-container:hover .tab-actions-group {
+  opacity: 1;
+}
+
+.tab-action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-sub);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.tabs-list, .bookmarks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tab-item, .bookmark-item, .folder-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 6px;
+  background: transparent;
+  border-radius: 8px;
+  cursor: grab;
+  color: var(--text-main);
+  transition: background 0.15s ease;
+}
+
+.tab-item:hover, .bookmark-item:hover, .folder-item:hover {
+  background: var(--bg-card-hover);
+}
+
+.tab-item.active {
+  background: var(--bg-active);
+  font-weight: 500;
+}
+
+.tab-icon, .bookmark-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.tab-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.close-btn {
+  color: var(--text-sub);
+  font-size: 11px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  opacity: 0;
+}
+
+.tab-item:hover .close-btn {
+  opacity: 1;
+}
+
+/* YER İMLERİ FLATICON SARI KLASÖR & ANİMASYONLU AÇILMA */
+.folder-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* KLASÖR - SIYAH ARKA PLAN ÇAKIŞMA ENGELLEYİCİ STİL */
+.folder-svg-icon {
+  width: 16px;
+  height: 16px;
+  /* İç dolgu: Temanıza uyumlu yarı şeffaf canlı sarı/gold tonu veya dinamik renk */
+  fill: #202020; 
+  
+  /* Çakışmayı önleyen dış çizgi (Koyu temalarda parlar, belirginleştirir) */
+  stroke: rgba(255, 255, 255, 0.35); 
+  stroke-width: 14px;
+  stroke-linejoin: round;
+  
+  /* Hafif bir gölge ile siyah zeminde görünürlüğü artırma */
+  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.2));
+  flex-shrink: 0;
+  transition: transform 0.1s ease, fill 0.1s ease, stroke 0.1s ease;
+}
+
+/* Klasörün Üzerine Gelindiğinde Belirginlik */
+.folder-item:hover .folder-svg-icon {
+  transform: scale(1.05);
+  stroke: rgba(255, 255, 255, 0.8); /* Kontrast çizgisini daha parlak yapar */
+}
+
+/* AÇILAN KLASÖR ZEMİNİ (Siyah Arka Plan ile Ayrıştırma) */
+.folder-container.open {
+  /* Siyah zemin üzerinde tatlı bir ayrışma sağlayan hafif yarı şeffaf katman */
+  background: transparent !important;
+  border: none !important; /* border yok. */
+  border-radius: 10px;
+  padding: 4px;
+  margin: 2px 0;
+}
+
+.folder-container.open > .folder-content {
+  max-height: 1200px;
+  opacity: 1;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  background: transparent !important;
+  /* background:  rgba(0, 0, 0, 0.2); /* Siyahın üstünde daha derin mat zemin */
+  border-radius: 8px;
+  padding: 6px 4px;
+}
+
+.folder-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 12px;
+  margin-left: 6px;
+  border-left: 1px dashed var(--border-color);
+  transition: max-height 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.25s ease, margin-top 0.2s ease;
+}
+
+.folder-container.open > .folder-content {
+  max-height: 1200px;
+  opacity: 1;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+/* ŞEFFAF ALT BAR (GLASSMORPHISM FOOTER) */
+.footer-settings-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 42px;
+  background: rgba(28, 28, 30, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  z-index: 100;
+}
+
+.settings-btn {
+  background: transparent !important;
+  border: none !important;
+  padding: 4px;
+  display: flex;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.1s, transform 0.1s;
+}
+
+.equalizer-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-main);
+}
+
+.settings-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.settings-popup {
+  display: none;
+  position: absolute;
+  bottom: 48px;
+  left: 10px;
+  width: 220px;
+  background: #252528 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  gap: 10px;
+  color: #f2f2f7 !important;
+  z-index: 101;
+}
+
+.settings-popup.open {
+  display: flex;
+}
+
+.popup-header {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a1a1a6 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.col-setting {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.setting-label-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.val-display {
+  font-size: 11px;
+  color: #a1a1a6;
+}
+
+.setting-row input[type="color"] {
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.setting-row input[type="range"] {
+  width: 100%;
+  accent-color: #7c4dff;
+}
+
+.context-menu {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  background: #252528;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  color: #f2f2f7;
+}
+
+.context-menu-item {
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.context-menu-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================================
+   AYARLAR POPUP & DİL SEÇİCİ (LANGUAGE DROPDOWN) STİLLERİ
+   ========================================================= */
+
+/* Ayarlar Popup Kutusu (Şeffaf Bardan Yukarı Açılan Panel) */
+.settings-popup {
+  display: none;
+  position: absolute;
+  bottom: 48px;
+  left: 10px;
+  width: 230px;
+  background: #252528 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  gap: 10px;
+  color: #f2f2f7 !important;
+  z-index: 101;
+}
+
+/* Popup Açık Durumu */
+.settings-popup.open {
+  display: flex;
+}
+
+/* Popup Başlığı */
+.popup-header {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a1a1a6 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+}
+
+/* Ayar Satırı */
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* Dil Seçim Açılır Menüsü (Dropdown Select) */
+.settings-select {
+  background: rgba(255, 255, 255, 0.12);
+  color: #f2f2f7;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 3px 6px;
+  font-size: 11px;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.settings-select:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.settings-select option {
+  background: #252528;
+  color: #f2f2f7;
+}
+
+/* EXPORT / IMPORT BUTONLARI VE YENİ AYARLAR STİLİ */
+.backup-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 8px;
+}
+
+.backup-btn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #f2f2f7;
+  padding: 6px 4px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.backup-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
