@@ -1,4 +1,4 @@
-##  🇬🇧 English Description
+####  🇬🇧 English Description
 ℹ️ *Türkçe açıklama için lütfen aşağı kaydırın - 
     For Turkish description, please scroll down*
 
@@ -47,7 +47,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
-## 🇹🇷 Türkçe Açıklama
+#### 🇹🇷 Türkçe Açıklama
 
 # Chrome İçin Arc Stili Yan Panel
 
