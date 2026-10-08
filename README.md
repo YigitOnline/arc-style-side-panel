@@ -14,7 +14,7 @@ A clean, modern, and customizable Chrome Side Panel extension inspired by Arc Br
 To get the most seamless, distraction-free Arc Browser experience in Google Chrome, we recommend the following setup:
 
 1. **Hide the Bookmarks Bar:** Press `Ctrl + Shift + B` (or `Cmd + Shift + B` on Mac) to hide Chrome's native horizontal bookmarks bar.
-2. **Hide Chrome's Native Tab Bar:** Open Chrome settings or use native flags/extension shortcuts to collapse/hide horizontal tabs when working in full screen.
+2. **Hide Chrome's Native Tab Bar:** Open Chrome settings or use native flags/extension shortcuts to collapse/hide horizontal tabs when working in full screen. OR -> **Chrome - Settings - Appearance - Tab Position - Vertical**
 3. **Pin the Side Panel:** Click the Side Panel icon in Chrome's top-right toolbar and pin it for instant `Ctrl + Command + S` / keyboard shortcut access.
 4. **Use Full Screen / Clean Mode:** Combine with Chrome's distraction-free fullscreen mode (`F11` or `Cmd + Ctrl + F`) to let your side panel serve as the main navigation hub.
 
@@ -85,7 +85,7 @@ Arc Browser'dan esinlenilerek geliştirilmiş; sade, modern ve kişiselleştiril
 Google Chrome üzerinde tam bir Arc Browser atmosferi yakalamak ve odaklanmış bir çalışma ortamı oluşturmak için şu adımları uygulamanızı öneririz:
 
 1. **Yer İmleri Çubuğunu Gizleyin:** Üstteki yatay yer imleri çubuğunu kaldırmak için `Ctrl + Shift + B` (Mac'te `Cmd + Shift + B`) kısayolunu kullanın.
-2. **Arama ve Üst Çubuğu Minimize Edin:** Tam ekrana geçtiğinizde (`F11` veya Mac'te `Cmd + Ctrl + F`) veya varsayılan yatay sekmeleri gizlediğinizde yan panel tek ana navigasyon merkeziniz haline gelir.
+2. **Arama ve Üst Çubuğu Minimize Edin:** Tam ekrana geçtiğinizde (`F11` veya Mac'te `Cmd + Ctrl + F`) veya varsayılan yatay sekmeleri gizlediğinizde yan panel tek ana navigasyon merkeziniz haline gelir. ya da Chrome - Ayarlar - Görünüm - Sekme Konumu - Dikey
 3. **Yan Paneli Sabitleyin:** Chrome'un sağ üst araç çubuğundaki Yan Panel simgesine tıklayıp sabitleyerek tek tıkla veya kısayolla hızlıca erişin.
    
 ---
