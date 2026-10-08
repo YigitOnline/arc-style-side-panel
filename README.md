@@ -20,7 +20,7 @@ A clean, modern, and customizable Chrome Side Panel extension inspired by Arc Br
 ### 📦 Installation (Developer Mode)
 
 1. Clone or download this repository.
-2. Open Chrome and navigate to `chrome://extensions`.
+2. Open Chrome or Chromium based browser and navigate to `chrome://extensions`.
 3. Enable **Developer mode** in the top-right corner.
 4. Click **Load unpacked** and select the extension folder.
 
@@ -62,9 +62,9 @@ Arc Browser'dan esinlenilerek geliştirilmiş; sade, modern ve kişiselleştiril
 
 ### 📦 Kurulum (Geliştirici Modu)
 
-1. Bu depoyu klonlayın veya `.zip` olarak indirin.
-2. Chrome'u açın ve `chrome://extensions` adresine gidin.
-3. Sağ üst köşedeki **Geliştirici modu** şalterini açın.
+1. Bu depoyu klonlayın veya release'den `.zip` olarak indirin.
+2. Chrome'u veya Chrome tabanlı web tarayıcınızı açın ve `chrome://extensions` adresine gidin.
+3. Sağ üst köşeden **Geliştirici modu**nu aktifleştirin.
 4. **Paketlenmemiş öge yükle** butonuna tıklayın ve uzantı klasörünü seçin.
 
 ---
