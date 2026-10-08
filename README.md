@@ -79,6 +79,17 @@ Google Chrome üzerinde tam bir Arc Browser atmosferi yakalamak ve odaklanmış 
    
 ---
 
+### 💡 Projenin Çıkış Hikayesi ve Motivasyon
+
+Arc Browser, dikey sekmeleri ve kenar çubuğu odaklı çalışma alanıyla web gezinme alışkanlıklarını değiştirdi. Ancak geliştirici şirketin odağını değiştirmesi, Arc'ın aktif geliştirilme sürecinin yavaşlaması ve geleceğinin belirsizleşmesi nedeniyle sırtı tamamen bağımsız bir tarayıcıya yaslamak riskli hale geldi. Chrome ve Chromium altyapısı ise internetin en köklü, güvenli ve sürdürülebilir limanı durumunda.
+
+Bu projeyi geliştirme motivasyonum:
+1. **Arc Deneyimini Geleceğe Taşımak:** Arc'ın en sevilen özelliklerini (dikey sekmeler, cam efekti arayüz, favoriler düzeni) Chrome'un sarsılmaz altyapısı üzerinde yaşatmaya devam etmek.
+2. **Yerel ve Hafif Altyapı:** Başka bir tarayıcıya geçmeden veya ağır araçlar kullanmadan Chrome'un yerleşik Yan Panel (Side Panel API) mimarisini doğrudan kullanmak.
+3. **Tamamen Açık Kaynak:** Mağaza kısıtlamalarına takılmadan, projeyi %100 ücretsiz, şeffaf ve açık kaynak (GPL-3.0) olarak doğrudan GitHub üzerinden topluluğa sunmak.
+
+---
+
 ### 🚀 Öne Çıkan Özellikler
 
 - **Arc Estetiği:** Özel gren/noise kaplamalı koyu degrade arka plan ve tam boy glassmorphism alt ayarlar çubuğu.
