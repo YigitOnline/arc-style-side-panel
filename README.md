@@ -1,5 +1,6 @@
 ##  🇬🇧 English Description
-ℹ️ *Türkçe açıklama için lütfen aşağı kaydırın - For Turkish description, please scroll down*
+ℹ️ *Türkçe açıklama için lütfen aşağı kaydırın - 
+    For Turkish description, please scroll down*
 
 # Arc Style Side Panel for Chrome
 
@@ -40,8 +41,11 @@ This extension uses icons provided by **[Flaticon](https://www.flaticon.com/)** 
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
+
+
 ---
-*
+
+
 
 ## 🇹🇷 Türkçe Açıklama
 
