@@ -20,6 +20,17 @@ To get the most seamless, distraction-free Arc Browser experience in Google Chro
 
 ---
 
+### 💡 Motivation & Behind the Project
+
+Arc Browser revolutionized web navigation with vertical tabs and a sidebar-centric workspace. However, with recent strategic shifts from its parent company slowing down Arc's development and leaving its long-term future uncertain, relying on a custom browser feels risky. Chrome and the Chromium ecosystem remain the most stable, reliable, and future-proof foundation.
+
+I created this extension to:
+1. **Future-Proof the Arc Experience:** Keep the best parts of Arc (vertical tabs, glassmorphism UI, pinned grid) on top of Google Chrome's robust and secure foundation.
+2. **Native & Lightweight:** Leverage Chrome's built-in Side Panel API (Manifest V3) without needing a full browser switch or heavy third-party software.
+3. **True Open Source & Free Distribution:** Built to be 100% free, open-source (GPL-3.0), and community-driven via GitHub—skipping store fees and restrictions.
+
+---
+
 ### 🚀 Key Features
 
 * **Arc-Inspired Aesthetics:** Dark gradient background with custom grain/noise overlay and full glassmorphism footer bar.
