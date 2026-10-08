@@ -1,6 +1,5 @@
 ##  🇬🇧 English Description
-##### ℹ️ *Türkçe açıklama için lütfen aşağı kaydırın - 
-    For Turkish description, please scroll down*
+---
 
 # Arc Style Side Panel for Chrome
 
@@ -47,8 +46,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
-#### 🇹🇷 Türkçe Açıklama
-
+## 🇹🇷 Türkçe Açıklama
+---
 # Chrome İçin Arc Stili Yan Panel
 
 Arc Browser'dan esinlenilerek geliştirilmiş; sade, modern ve kişiselleştirilebilir bir Chrome Yan Panel (Side Panel) uzantısı. Koyu tema, cam efekti (glassmorphism) bileşenleri, sabit gren/noise arka plan kaplaması, dikey sekme yönetimi, hiyerarşik yer imleri ve 4 sütunlu sürükle-bırak favori grid yapısı sunar.
