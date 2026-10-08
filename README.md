@@ -40,9 +40,7 @@ This extension uses icons provided by **[Flaticon](https://www.flaticon.com/)** 
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-**---**
----
----
+
 
 ## 🇹🇷 Türkçe Açıklama
 
